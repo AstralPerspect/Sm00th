@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+		<meta http-equiv="refresh" content="60" >
+		
+		<title>SmOOth</title>
+		
+		<!-- <link href="normalize.css" rel="stylesheet" type="text/css"> --> <!-- type="text/css" is not needed but is needed for older browsers -->
+		<!--	<link href="styles/magicunder.css" rel="stylesheet" type="text/css">	-->
+		<link rel="stylesheet" href="styles/landing.css">
+		
+		<!-- some bs to tweak -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+		
+		<!-- JQuery CND -->
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		
+	<!--find out if this will interf
+		<script src="scripts/lzbg.js"></script>
+		<script src="scripts/lz.js"></script>
+	-->
+		<!-- Plugin -->
+		
+		<script src="scripts/jquery.cloud9carousel.js"></script>
+
+		
+		
+	</head>
+
+<!-- showcase>>> class="noselect" style=" position:relative; overflow: hidden; visibility: visibile;"-->
+	<body>
+		<div id="wrap">
+			<div id="showcase" >
+			<a href="shop.html">
+				<img class="cloud9-item" src="https://media.giphy.com/media/FPsnQkFXlz0g8/giphy.gif" alt="shop">
+			</a>
+			<a href="gallery.html">
+				<img class="cloud9-item" src="media/gallery-nav.png" alt="gallery">
+			</a>
+			<a href="contact.html">
+				<img class="cloud9-item" src="media/contact-nav.png" alt="contact">
+			</a>
+			<a href="archive.html">	
+				<img class="cloud9-item" src="media/archive-nav.png" alt="archive">
+			</a>
+			<a href="about.html">	
+				<img class="cloud9-item" src="media/about-nav.png" alt="about">
+			</a>
+			<!--
+				<div class="card" class="cloud9-item">
+					<h2>Shop</h2>
+					<p>Come cop some heat thats actually kinda cold depending on the season.</p>
+				</div>
+				<div class="card" class="cloud9-item">
+					<h2>Archive</h2>
+					<p>It's not worth it, your eyes can't handle our past collections.</p>
+				</div>
+				<div class="card" class="cloud9-item">
+					<h2>Gallery</h2>
+					<p>Talent? Never heard of it.</p>
+				</div>
+				<div class="card" class="cloud9-item">
+					<h2>About</h2>
+					<p>You don't know what we're about so come take a peak</p>
+				</div>
+				<div class="card" class="cloud9-item">
+					<h2>Contact Us</h2>
+					<p>Collab? Featured Art? Any Ideas? Fuck It Just Let Us Know You're Out There.</p>
+				</div>
+			-->
+			</div>
+			 <!--remove title and move buttons farther up-->
+			<p id="item-title">Where We Going?</p> 
+
+            <div class="nav noselect">
+                  <button class="left"><i class="fa fa-arrow-left"></i></button>
+                  <button class="right"><i class="fa fa-arrow-right"></i></button>
+            </div>
+
+      </div>
+
+      <script type="text/javascript">
+
+      $(function() {
+            var showcase = $("#showcase")
+
+            showcase.Cloud9Carousel( {
+				
+                yRadius: 60,
+				xRadius: 350,
+				farScale: .7,
+				  
+                 /* only used for reflection purposes
+					mirrorOptions: {
+                        gap: 12,
+                        height: 1
+					}, 
+				  */
+                  buttonLeft: $(".nav > .left"),
+                  buttonRight: $(".nav > .right"),
+                  autoPlay: false,
+                  bringToFront: true,
+
+                  onRendered: showcaseUpdated,
+                  onLoaded: function() {
+                        showcase.css( 'visibility', 'visible' )
+                        showcase.css( 'display', 'none')
+                        showcase.fadeIn( 1300 )
+                  }
+            })
+
+            function showcaseUpdated( showcase ) {
+                  var title = $("#item-title").html(
+                        $(showcase.nearestItem()).attr( 'alt' )
+                  )
+
+                  var c = Math.cos((showcase.floatIndex() % 1) * 2 * Math.PI)
+                  title.css('opacity', 0.5 + (0.5 * c))
+            }
+
+            $('.nav > button').click( function( e ) {
+                  var b = $(e.target).addClass( 'down' )
+                  setTimeout( function() { b.removeClass( 'down' ) }, 80)
+            } )
+
+            $(document).keydown( function( e ) {
+                  switch( e.keyCode ) {
+                        case 37:
+                        $('.nav > .left').click()
+                        break
+
+                        case 39:
+                        $('.nav > .right').click()
+                  }
+            })
+      })
+
+      </script>
+</body>
+</html>
+
+
+<!--   
+<body class="home" id="playground">
+	
+	<div class="vid-wrap" >
+		
+			<video class="vid-form lazy-hidden" data-src="media/video-bg.mp4" data-poster="media/orig.png"
+			loop muted autoplay playinline poster="media/video-still.jpeg" src="media/globe-bg.mp4">
+			</video>
+		</div>	
+		
+		<script src="scripts/enter_clk.js"></script>
+	</body>
+
+
+
+
+-->
